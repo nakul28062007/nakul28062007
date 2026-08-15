@@ -35,11 +35,6 @@
 ### 📊 GitHub Stats
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats-sigma-five.vercel.app/api?username=nakul28062007&show_icons=true&theme=radical&hide_border=true&count_private=true&cache_seconds=1800" />
-  <img height="165" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=nakul28062007&layout=compact&theme=radical&hide_border=true&cache_seconds=1800" />
-</p>
-
-<p align="center">
   <img src="https://streak-stats.demolab.com/?user=nakul28062007&theme=radical&hide_border=true" />
 </p>
 
