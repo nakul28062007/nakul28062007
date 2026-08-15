@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com/?lines=Hi,+I'm+Nakul+%F0%9F%91%8B;Web+Developer+in+progress...;Learning+HTML,+CSS,+JS,+Git+%26+GitHub;Open+to+collaborate+on+cool+projects!&font=Fira%20Code&center=true&width=500&height=50&duration=3000&color=A970FF&vCenter=true" />
+  <img src="https://readme-typing-svg.demolab.com/?lines=Hi,+I'm+Nakul+%F0%9F%91%8B;Web+Developer+in+progress...;Open+to+collaborate+on+cool+projects!&font=Fira%20Code&center=true&width=500&height=50&duration=3000&color=A970FF&vCenter=true" />
 </p>
 
 ---
