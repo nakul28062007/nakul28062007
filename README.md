@@ -17,7 +17,7 @@
 ### 🙋‍♂️ About Me
 
 - 🔭 Currently working on small web projects to sharpen my frontend skills
-- 🌱 Learning **HTML, CSS, JavaScript, Git & GitHub**
+- 🌱 Learning Backend Development **Node.js, Express.js, React.js, Git & GitHub, Database & APIs**
 - 👯 Looking to collaborate on beginner-friendly web dev projects and college tech club work
 - 🤝 Looking for help with code structure, responsive design, and real-world project building
 - 💬 Ask me about web dev basics, Java/DSA, or my project ideas
