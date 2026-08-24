@@ -1,26 +1,33 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Nakulvasudev&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Web%20Developer%20|%20Student%20|%20Builder&descAlignY=55&descSize=18" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Nakulvasudev&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Web%20Developer%20in%20Progress%20|%20Student%20|%20Builder&descAlignY=55&descSize=18" />
 </p>
 
 <p align="center">
-  <a href="https://instagram.com/n.v._28"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white" /></a>
-  <a href="https://www.linkedin.com/in/nakulvasudev"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" /></a>
-  <a href="mailto:nakul.thanigai@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white" /></a>
+  <a href="https://instagram.com/n.v._28">
+    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white" />
+  </a>
+  <a href="https://www.linkedin.com/in/nakulvasudev">
+    <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" />
+  </a>
+  <a href="mailto:nakul.thanigai@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white" />
+  </a>
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com/?lines=Hi,+I'm+Nakul+%F0%9F%91%8B;Web+Developer+in+progress...;Open+to+collaborate+on+cool+projects!&font=Fira%20Code&center=true&width=500&height=50&duration=3000&color=A970FF&vCenter=true" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira%20Code&size=22&duration=3000&pause=1000&color=A970FF&center=true&vCenter=true&width=600&height=50&lines=Hi%2C%20I'm%20Nakul%20%F0%9F%91%8B;Web%20Developer%20in%20Progress;Learning%20by%20Building%20Projects;Open%20to%20Collaborate%20on%20Cool%20Ideas" />
 </p>
 
 ---
 
 ### 🙋‍♂️ About Me
 
-- 🔭 Currently working on small web projects to sharpen my frontend skills
-- 🌱 Learning Backend Development **Node.js, Express.js, React.js, Git & GitHub, Database & APIs**
-- 👯 Looking to collaborate on beginner-friendly web dev projects and college tech club work
-- 🤝 Looking for help with code structure, responsive design, and real-world project building
-- 💬 Ask me about web dev basics, Java/DSA, or my project ideas
+- 🔭 Currently working on small web projects to improve my frontend skills
+- 🌱 Learning **HTML, CSS, JavaScript, React, Node.js, Git, GitHub, Databases, and APIs**
+- 👯 Open to collaborating on beginner-friendly web development projects
+- 🤝 Interested in college tech club work, hackathons, and real-world project building
+- 💬 Ask me about web development basics, Java/DSA, or my project ideas
+- ⚡ I enjoy learning by building and improving one project at a time
 
 ---
 
@@ -35,7 +42,15 @@
 ### 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=nakul28062007&theme=radical&hide_border=true" />
+  <img src="https://github-readme-stats.vercel.app/api?username=nakul28062007&show_icons=true&theme=radical&hide_border=true" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nakul28062007&layout=compact&theme=radical&hide_border=true" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=nakul28062007&theme=radical&hide_border=true" />
 </p>
 
 ---
@@ -44,4 +59,6 @@
   <img src="https://komarev.com/ghpvc/?username=nakul28062007&color=blueviolet&style=flat" />
 </p>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" />
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" />
+</p>
