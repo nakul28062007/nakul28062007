@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nakul — Software / Web Dev Portfolio</title>
+<meta name="description" content="Portfolio of Nakul, first-year B.Tech CSE student — software dev and web dev projects." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEFE7;
+    --panel:#F8F9F3;
+    --panel-2:#E4E7DC;
+    --ink:#1B2420;
+    --ink-soft:#3C453E;
+    --muted:#6B7268;
+    --line:#C6CDB9;
+    --line-strong:#9AA48D;
+    --trace:#2E5C86;
+    --trace-deep:#1F3E5C;
+    --amber:#C9992B;
+    --amber-deep:#8F6A16;
+    --paper-dark:#161B17;
+    --paper-dark-2:#1F2620;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:44px 44px;
+    background-position:-1px -1px;
+  }
+
+  a{color:inherit;}
+  h1,h2,h3,h4{font-family:var(--font-display); margin:0; letter-spacing:-0.01em;}
+  p{margin:0;}
+  .mono{font-family:var(--font-mono);}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--trace);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* ---------- NAV ---------- */
+  .topnav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,239,231,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .topnav-inner{
+    display:flex; align-items:center; justify-content:center;
+    padding:14px 24px; position:relative;
+  }
+  .nav-links{
+    position:relative;
+    display:flex; gap:28px; list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    font-family:var(--font-mono); font-size:12px; text-transform:uppercase;
+    letter-spacing:0.08em; text-decoration:none; color:var(--ink-soft);
+    padding-bottom:3px; border-bottom:2px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  .nav-links a:hover{color:var(--trace); border-color:var(--trace);}
+  .nav-links li.nav-emphasis a{font-weight:700; color:var(--ink);}
+  .nav-indicator{
+    position:absolute; bottom:-3px; left:0; height:2px; width:0;
+    background:var(--trace); opacity:0; pointer-events:none; list-style:none;
+    transition:transform .28s cubic-bezier(.4,0,.2,1), width .28s cubic-bezier(.4,0,.2,1), opacity .2s ease;
+  }
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--line-strong);
+    border-radius:4px; padding:7px 9px; cursor:pointer;
+    margin-left:auto;
+  }
+  .nav-toggle span{display:block; width:18px; height:2px; background:var(--ink); margin:3px 0;}
+
+  @media (max-width:820px){
+    .topnav-inner{justify-content:flex-start;}
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0; background:var(--panel);
+      border-bottom:1px solid var(--line-strong);
+      max-height:0; overflow:hidden; transition:max-height .25s ease;
+    }
+    .nav-links.open{max-height:320px;}
+    .nav-links a{
+      display:block; padding:14px 24px; border-bottom:1px solid var(--line);
+      border-bottom-width:1px !important;
+    }
+    .nav-indicator{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO / TITLE BLOCK ---------- */
+  .hero{
+    background:var(--paper-dark);
+    color:#EDEFE7;
+    background-image:
+      linear-gradient(rgba(46,92,134,0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,92,134,0.16) 1px, transparent 1px);
+    background-size:44px 44px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 78% 8%, rgba(46,92,134,0.35), transparent 55%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; padding:56px 24px 0;}
+  .titleblock-meta{
+    display:flex; flex-wrap:wrap; gap:8px 28px;
+    font-family:var(--font-mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.1em; color:#9FB0A2;
+    border-bottom:1px solid rgba(159,176,162,0.28);
+    padding-bottom:16px; margin-bottom:40px;
+  }
+  .titleblock-meta span b{color:#EDEFE7; font-weight:600;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px;
+    align-items:end; padding-bottom:52px;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; padding-bottom:36px;} }
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12px; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--amber); margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow .rule{width:26px; height:1px; background:var(--amber); display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem); font-weight:600; line-height:1.04;
+    color:#F5F6F1;
+  }
+  .hero h1 em{font-style:normal; color:#8FB4D6; display:inline-block; font-size:0.38em; letter-spacing:0.04em; vertical-align:middle;}
+  .hero-lede{
+    margin-top:22px; max-width:52ch; font-size:1.05rem; line-height:1.6;
+    color:#C7D0C9;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase;
+    letter-spacing:0.06em; padding:12px 18px; text-decoration:none;
+    border-radius:3px; transition:transform .12s ease, background .15s ease, color .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--amber); color:#211a08; font-weight:600;}
+  .btn-primary:hover{background:#E0B247;}
+  .btn-outline{border:1px solid rgba(237,239,231,0.35); color:#EDEFE7;}
+  .btn-outline:hover{border-color:var(--amber); color:var(--amber);}
+
+  /* status panel */
+  .status-panel{
+    background:rgba(237,239,231,0.05);
+    border:1px solid rgba(237,239,231,0.18);
+    border-radius:4px; padding:24px;
+  }
+  .status-panel-head{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.1em; color:#9FB0A2; padding-bottom:14px;
+    border-bottom:1px solid rgba(237,239,231,0.18); margin-bottom:18px;
+  }
+  .live-dot{display:inline-flex; align-items:center; gap:6px; color:var(--amber);}
+  .live-dot i{width:6px; height:6px; border-radius:50%; background:var(--amber); display:inline-block; animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.35;}}
+  .status-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px 18px;}
+  .status-item{border-left:2px solid var(--trace); padding-left:12px;}
+  .status-item b{display:block; font-family:var(--font-mono); font-size:1.9rem; font-weight:600; color:#F5F6F1;}
+  .status-item span{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:#9FB0A2;}
+  .status-full{grid-column:1/-1; border-top:1px solid rgba(237,239,231,0.18); padding-top:16px; border-left:none; padding-left:0;}
+  .status-full span{display:block; margin-bottom:6px;}
+  .status-full p{font-family:var(--font-display); font-size:1.05rem; color:#F5F6F1;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:80px 24px;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap;
+    gap:12px; margin-bottom:36px; border-bottom:1px solid var(--line-strong); padding-bottom:18px;
+  }
+  .section-tag{
+    font-family:var(--font-mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--trace); margin-bottom:8px; display:block;
+  }
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem);}
+  .section-note{font-family:var(--font-mono); font-size:11.5px; color:var(--muted); max-width:32ch; text-align:right;}
+  @media (max-width:700px){ .section-note{text-align:left;} }
+
+  /* ---------- FILTERS ---------- */
+  .filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px;}
+  .filter-btn{
+    font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em;
+    padding:9px 14px; border:1px solid var(--line-strong); background:var(--panel);
+    border-radius:3px; cursor:pointer; color:var(--ink-soft); transition:all .15s ease;
+  }
+  .filter-btn:hover{border-color:var(--trace); color:var(--trace);}
+  .filter-btn.active{background:var(--trace); border-color:var(--trace); color:#F5F6F1;}
+
+  /* ---------- PROJECT CARDS (DATASHEETS) ---------- */
+  .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:800px){ .project-grid{grid-template-columns:1fr;} }
+
+  .datasheet{
+    background:var(--panel); border:1px solid var(--line-strong); border-radius:4px;
+    position:relative; overflow:hidden; transition:border-color .15s ease;
+  }
+  .datasheet[data-hide="true"]{display:none;}
+  .datasheet:hover{border-color:var(--trace);}
+  .datasheet[data-link]{cursor:pointer;}
+  .ds-head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:14px;
+    padding:20px 20px 16px; border-bottom:1px dashed var(--line-strong);
+  }
+  .ds-id{font-family:var(--font-mono); font-size:11px; color:var(--muted); letter-spacing:0.06em; display:block; margin-bottom:6px;}
+  .ds-head h3{font-size:1.3rem; display:flex; align-items:center; gap:8px;}
+  .ds-arrow{
+    font-family:var(--font-mono); font-size:0.68em; color:var(--trace);
+    display:inline-block; opacity:0.6; transition:transform .18s ease, opacity .18s ease;
+  }
+  .datasheet:hover .ds-arrow, .datasheet:focus-within .ds-arrow{transform:translate(3px,-3px); opacity:1;}
+  .ds-tagline{color:var(--ink-soft); font-size:0.92rem; margin-top:6px;}
+  .stamp{
+    font-family:var(--font-mono); font-size:9.5px; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; border:2px solid; border-radius:3px; padding:5px 8px;
+    transform:rotate(3deg); white-space:nowrap; flex-shrink:0;
+  }
+  .stamp.shipped{color:#2E6B4C; border-color:#2E6B4C;}
+  .stamp.dev{color:var(--amber-deep); border-color:var(--amber-deep);}
+  .stamp.coursework{color:var(--trace-deep); border-color:var(--trace-deep);}
+
+  .ds-body{padding:18px 20px 4px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
+  .tag{
+    font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.05em;
+    background:var(--panel-2); border:1px solid var(--line-strong); border-radius:2px;
+    padding:4px 8px; color:var(--ink-soft);
+  }
+  .ds-summary{font-size:0.94rem; color:var(--ink-soft); line-height:1.6;}
+
+  details.ds-details{border-top:1px dashed var(--line-strong); margin-top:16px;}
+  details.ds-details summary{
+    list-style:none; cursor:pointer; padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--trace);
+  }
+  details.ds-details summary::-webkit-details-marker{display:none;}
+  summary .chev{transition:transform .2s ease; font-size:14px;}
+  details[open] summary .chev{transform:rotate(180deg);}
+  .ds-expand{padding:0 20px 22px;}
+  .spec-cols{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:520px){ .spec-cols{grid-template-columns:1fr;} }
+  .spec-col h4{
+    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--muted); margin-bottom:10px;
+  }
+  .spec-col ul{margin:0; padding:0; list-style:none;}
+  .spec-col li{
+    font-size:0.88rem; color:var(--ink-soft); padding-left:16px; position:relative; margin-bottom:9px; line-height:1.5;
+  }
+  .spec-col li::before{content:"–"; position:absolute; left:0; color:var(--trace);}
+  .ds-links{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
+  .ds-link{
+    font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.05em;
+    display:inline-flex; align-items:center; gap:6px; padding:8px 12px;
+    border:1px solid var(--line-strong); border-radius:3px; text-decoration:none;
+    color:var(--ink-soft); transition:all .15s;
+  }
+  .ds-link:hover{border-color:var(--trace); color:var(--trace);}
+  .ds-nolink{
+    font-family:var(--font-mono); font-size:11px; color:var(--muted); font-style:normal;
+    padding:8px 0;
+  }
+
+  /* ---------- TRACK RECORD ---------- */
+  .track-strip{
+    background:var(--paper-dark-2); color:#EDEFE7; border-radius:4px; padding:32px;
+  }
+  .track-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media (max-width:760px){ .track-grid{grid-template-columns:1fr 1fr;} }
+  .track-item{border-left:2px solid var(--amber); padding-left:14px;}
+  .track-item b{display:block; font-family:var(--font-display); font-size:2.4rem; font-weight:600;}
+  .track-item span{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#9FB0A2; display:block; margin-top:4px;}
+  .track-foot{
+    margin-top:26px; padding-top:20px; border-top:1px solid rgba(237,239,231,0.18);
+    font-family:var(--font-mono); font-size:12.5px; color:#C7D0C9; line-height:1.7;
+  }
+  .track-foot b{color:var(--amber);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:block;}
+  .about-copy p{margin-bottom:16px; font-size:1rem; line-height:1.75; color:var(--ink-soft); max-width:64ch;}
+  .about-copy strong{color:var(--ink); font-weight:600;}
+
+  .capability-map{border:1px solid var(--line-strong); border-radius:4px; overflow:hidden; background:var(--panel);}
+  .cap-row{
+    display:grid; grid-template-columns:110px 1fr; gap:14px;
+    padding:16px 18px; border-bottom:1px solid var(--line);
+  }
+  .cap-row:last-child{border-bottom:none;}
+  .cap-label{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--trace); padding-top:2px;}
+  .cap-value b{display:block; font-family:var(--font-display); font-size:0.98rem; margin-bottom:2px;}
+  .cap-value span{font-family:var(--font-mono); font-size:11.5px; color:var(--muted);}
+
+  /* ---------- CONTACT / SIGNATURE BLOCK ---------- */
+  .contact-section{background:var(--paper-dark); color:#EDEFE7;}
+  .sig-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(237,239,231,0.18); border:1px solid rgba(237,239,231,0.18); margin-top:36px;}
+  @media (max-width:760px){ .sig-grid{grid-template-columns:1fr;} }
+  .sig-cell{background:var(--paper-dark); padding:26px 22px;}
+  .sig-cell span.lbl{
+    display:block; font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.1em; color:#9FB0A2; margin-bottom:14px;
+  }
+  .sig-cell a.val{
+    font-family:var(--font-display); font-size:1.15rem; color:#F5F6F1; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid transparent;
+  }
+  .sig-cell a.val:hover{border-color:var(--amber); color:var(--amber);}
+  .sig-cell .placeholder{font-family:var(--font-mono); font-size:0.95rem; color:#6E7A70; font-style:italic;}
+  .contact-foot{
+    margin-top:40px; padding-top:24px; border-top:1px solid rgba(237,239,231,0.18);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:var(--font-mono); font-size:11px; color:#7C8880; text-transform:uppercase; letter-spacing:0.06em;
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#track">Track record</a></li>
+      <li><a href="#about">About</a></li>
+      <li class="nav-emphasis"><a href="#contact">Contact</a></li>
+      <li class="nav-indicator" id="navIndicator" aria-hidden="true"></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="hero-inner wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Nakulvasudev<br><em>Student | Web Developer</em></h1>
+          <p class="hero-lede">Second-year CSE student. A working log of the last year's builds — a command-line banking system, a C++ domain model, a few web projects, two embedded builds, and ongoing DSA practice.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#projects">Inspect projects ↓</a>
+          <a class="btn btn-outline" href="https://github.com/nakul28062007" target="_blank" rel="noopener">GitHub profile ↗</a>
+        </div>
+      </div>
+      <div class="status-panel">
+        <div class="status-panel-head">
+          <span>System status</span>
+          <span class="live-dot"><i></i>Updated Aug 2026</span>
+        </div>
+        <div class="status-grid">
+          <div class="status-item"><b>06</b><span>Featured projects</span></div>
+          <div class="status-item"><b>47</b><span>LeetCode solved (Java)</span></div>
+          <div class="status-item status-full">
+            <span>Primary languages</span>
+            <p>Java · C++ · JavaScript · C</p>
+          </div>
+          <div class="status-item status-full">
+            <span>Frameworks — in progress</span>
+            <p>Node.js · Express</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- PROJECTS -->
+  <section class="section wrap" id="projects">
+    <div class="section-head">
+      <div>
+        <h2>Featured projects</h2>
+      </div>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter projects by category">
+      <button class="filter-btn active" data-filter="all">All (6)</button>
+      <button class="filter-btn" data-filter="software">Software dev</button>
+      <button class="filter-btn" data-filter="web">Web dev</button>
+      <button class="filter-btn" data-filter="systems">Systems / embedded</button>
+    </div>
+
+    <div class="project-grid" id="projectGrid">
+
+      <!-- GDB Banking -->
+      <article class="datasheet" data-cat="software" data-link="https://github.com/nakul28062007/gdb-banking.git">
+        <div class="ds-head">
+          <div>
+            <span class="ds-id">SPEC-001 / JAVA</span>
+            <h3>GDB Banking <span class="ds-arrow" aria-hidden="true">↗</span></h3>
+            <p class="ds-tagline">Layered command-line banking system</p>
+          </div>
+          <span class="stamp dev">In dev</span>
+        </div>
+        <div class="ds-body">
+          <div class="tag-row"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Data structures</span><span class="tag">CLI</span></div>
+          <p class="ds-summary">A banking system built with the entity layer kept fully separate from the UI/I-O layer, using ArrayList and HashMap for O(1) account lookups and defensive validation on every input path.</p>
+        </div>
+        <details class="ds-details">
+          <summary>Build log &amp; notes <span class="chev">⌄</span></summary>
+          <div class="ds-expand">
+            <div class="spec-cols">
+              <div class="spec-col">
+                <h4>How it was built</h4>
+                <ul>
+                  <li>Entity layer separated from UI/I-O layer</li>
+                  <li>ArrayList and HashMap used for O(1) account lookups</li>
+                  <li>Defensive input validation across all operations</li>
+                  <li>Phase 2 planned: CSV persistence + a LangChain/LangGraph agent layer</li>
+                </ul>
+              </div>
+              <div class="spec-col">
+                <h4>What I learned</h4>
+                <ul>
+                  <li>Why separating data models from I/O makes a codebase easier to extend</li>
+                  <li>Trade-offs between list and hash-map lookups at small vs. large scale</li>
+                  <li>How much validation logic a "simple" CLI app actually needs</li>
+                </ul>
+              </div>
+            </div>
+            <p class="ds-nolink">No public repo yet — actively in development.</p>
+          </div>
+        </details>
+      </article>
+
+      <!-- MedChain -->
+      <article class="datasheet" data-cat="software" data-link="https://github.com/nakul28062007/medchain-system.git">
+        <div class="ds-head">
+          <div>
+            <span class="ds-id">SPEC-002 / C++</span>
+            <h3>MedChain <span class="ds-arrow" aria-hidden="true">↗</span></h3>
+            <p class="ds-tagline">Blood-donor matching domain model</p>
+          </div>
+          <span class="stamp coursework">HACKATHON</span>
+        </div>
+        <div class="ds-body">
+          <div class="tag-row"><span class="tag">C++</span><span class="tag">OOP</span><span class="tag">Enums</span><span class="tag">Domain modeling</span></div>
+          <p class="ds-summary">Models a blood-donor matching workflow through a Person/Donor/Hospital/Location/Request class hierarchy, with a MatchingService that filters donors by compatibility.</p>
+        </div>
+        <details class="ds-details">
+          <summary>Build log &amp; notes <span class="chev">⌄</span></summary>
+          <div class="ds-expand">
+            <div class="spec-cols">
+              <div class="spec-col">
+                <h4>How it was built</h4>
+                <ul>
+                  <li>Class hierarchy: Person, Donor, Hospital, Location, Request</li>
+                  <li>Enums for BloodGroup, DonorStatus, and UrgencyLevel</li>
+                  <li>A MatchingService class filters compatible donors against a request</li>
+                  <li>Built as coursework for an OOP module</li>
+                </ul>
+              </div>
+              <div class="spec-col">
+                <h4>What I learned</h4>
+                <ul>
+                  <li>How to model a real-world workflow as a class hierarchy, not just data</li>
+                  <li>Where enums make domain rules explicit instead of implicit</li>
+                  <li>Designing a "service" class that operates across multiple entities</li>
+                </ul>
+              </div>
+            </div>
+            <p class="ds-nolink">No public repo yet.</p>
+          </div>
+        </details>
+      </article>
+
+      <!-- Arcade Village -->
+      <article class="datasheet" data-cat="web" data-link="https://nakul28062007.github.io/Arcade-Village/">
+        <div class="ds-head">
+          <div>
+            <span class="ds-id">SPEC-003 / JS</span>
+            <h3>Arcade Village <span class="ds-arrow" aria-hidden="true">↗</span></h3>
+            <p class="ds-tagline">Pixel-art overworld linking three mini-games</p>
+          </div>
+          <span class="stamp shipped">Shipped</span>
+        </div>
+        <div class="ds-body">
+          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">Game dev</span><span class="tag">Sprites</span></div>
+          <p class="ds-summary">Unifies three earlier bootcamp mini-games — Dice, Simon, and Drum Kit — into one explorable pixel-art map with WASD movement and trigger-zone navigation.</p>
+        </div>
+        <details class="ds-details">
+          <summary>Build log &amp; notes <span class="chev">⌄</span></summary>
+          <div class="ds-expand">
+            <div class="spec-cols">
+              <div class="spec-col">
+                <h4>How it was built</h4>
+                <ul>
+                  <li>Vanilla JS + jQuery, no game framework</li>
+                  <li>WASD movement with sprite-sheet animation</li>
+                  <li>Trigger zones on the map launch each embedded mini-game</li>
+                  <li>Combines three separate bootcamp projects into one navigable world</li>
+                </ul>
+              </div>
+              <div class="spec-col">
+                <h4>What I learned</h4>
+                <ul>
+                  <li>Managing game state and animation frames without a framework</li>
+                  <li>Structuring trigger-zone collision logic on a 2D grid</li>
+                  <li>Turning three disconnected exercises into one cohesive product</li>
+                </ul>
+              </div>
+            </div>
+            <div class="ds-links">
+              <a class="ds-link" href="https://nakul28062007.github.io/Arcade-Village/" target="_blank" rel="noopener">Live demo ↗</a>
+              <a class="ds-link" href="https://github.com/nakul28062007/Arcade-Village" target="_blank" rel="noopener">Repo ↗</a>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <!-- Signup Dashboard -->
+      <article class="datasheet" data-cat="web" data-link="https://nakul28062007.github.io/signup-dashboard/">
+        <div class="ds-head">
+          <div>
+            <span class="ds-id">SPEC-004 / JS</span>
+            <h3>Signup Dashboard <span class="ds-arrow" aria-hidden="true">↗</span></h3>
+            <p class="ds-tagline">Validated signup flow + CRUD admin dashboard</p>
+          </div>
+          <span class="stamp shipped">Shipped</span>
+        </div>
+        <div class="ds-body">
+          <div class="tag-row"><span class="tag">HTML/CSS/JS</span><span class="tag">SHA-256</span><span class="tag">localStorage</span><span class="tag">CRUD</span></div>
+          <p class="ds-summary">A signup flow with client-side validation and SHA-256 password hashing, backed by a localStorage dashboard that supports full create/read/update/delete on user records.</p>
+        </div>
+        <details class="ds-details">
+          <summary>Build log &amp; notes <span class="chev">⌄</span></summary>
+          <div class="ds-expand">
+            <div class="spec-cols">
+              <div class="spec-col">
+                <h4>How it was built</h4>
+                <ul>
+                  <li>Client-side validation on the signup form</li>
+                  <li>Passwords hashed with SHA-256 before storage</li>
+                  <li>localStorage-backed dashboard with delete support</li>
+                  <li>Built for the NSCC SRM technical recruitment task</li>
+                </ul>
+              </div>
+              <div class="spec-col">
+                <h4>What I learned</h4>
+                <ul>
+                  <li>Why hashing isn't the same as encryption, and where it fits</li>
+                  <li>Structuring a CRUD dashboard on top of browser storage</li>
+                  <li>Working under a fixed brief with a hard scope and deadline</li>
+                </ul>
+              </div>
+            </div>
+            <p class="ds-nolink">No public link yet.</p>
+          </div>
+        </details>
+      </article>
+
+      <!-- The Final Meridian -->
+      <article class="datasheet" data-cat="web" data-link="https://nakul28062007.github.io/the-final-meridian-bootstrap-landing-page/">
+        <div class="ds-head">
+          <div>
+            <span class="ds-id">SPEC-005 / CSS</span>
+            <h3>The Final Meridian <span class="ds-arrow" aria-hidden="true">↗</span></h3>
+            <p class="ds-tagline">Bootstrap 5 landing page, fictional Antarctic resort</p>
+          </div>
+          <span class="stamp shipped">Shipped</span>
+        </div>
+        <div class="ds-body">
+          <div class="tag-row"><span class="tag">Bootstrap 5</span><span class="tag">CSS Grid</span><span class="tag">Flexbox</span><span class="tag">Video hero</span></div>
+          <p class="ds-summary">A landing page for a fictional Antarctic resort, combining Bootstrap 5 with custom CSS Grid and Flexbox layouts, a full-screen video hero edited in DaVinci Resolve, and a Bootstrap carousel.</p>
+        </div>
+        <details class="ds-details">
+          <summary>Build log &amp; notes <span class="chev">⌄</span></summary>
+          <div class="ds-expand">
+            <div class="spec-cols">
+              <div class="spec-col">
+                <h4>How it was built</h4>
+                <ul>
+                  <li>Bootstrap 5 grid extended with custom CSS Grid/Flexbox sections</li>
+                  <li>Full-screen video hero, edited in DaVinci Resolve</li>
+                  <li>Bootstrap carousel for the amenities section</li>
+                  <li>Strongest of four Bootstrap practice builds — the other three exist but weren't featured, since they repeat the same skill</li>
+                </ul>
+              </div>
+              <div class="spec-col">
+                <h4>What I learned</h4>
+                <ul>
+                  <li>Where Bootstrap's grid needs custom CSS to do what it can't alone</li>
+                  <li>Basic video editing for a functional (not just decorative) hero section</li>
+                  <li>Recognizing when a build is "done enough" to feature vs. archive</li>
+                </ul>
+              </div>
+            </div>
+            <div class="ds-links">
+              <a class="ds-link" href="https://nakul28062007.github.io/the-final-meridian-bootstrap-landing-page/" target="_blank" rel="noopener">Live demo ↗</a>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <!-- Smart Street Light -->
+      <article class="datasheet" data-cat="systems" data-link="https://github.com/nakul28062007/arduino-smart-street-light-system.git">
+        <div class="ds-head">
+          <div>
+            <span class="ds-id">SPEC-006 / C</span>
+            <h3>Smart Street Light System <span class="ds-arrow" aria-hidden="true">↗</span></h3>
+            <p class="ds-tagline">Dual-sensor, energy-saving lamp logic</p>
+          </div>
+          <span class="stamp shipped">Shipped</span>
+        </div>
+        <div class="ds-body">
+          <div class="tag-row"><span class="tag">Arduino UNO</span><span class="tag">C</span><span class="tag">LDR sensor</span><span class="tag">IR sensor</span></div>
+          <p class="ds-summary">Combines an LDR light sensor with an IR motion sensor so the lamp only turns on when it's both dark and something is moving — an energy-saving design, not just an on/off automation demo.</p>
+        </div>
+        <details class="ds-details">
+          <summary>Build log &amp; notes <span class="chev">⌄</span></summary>
+          <div class="ds-expand">
+            <div class="spec-cols">
+              <div class="spec-col">
+                <h4>How it was built</h4>
+                <ul>
+                  <li>Arduino UNO programmed in C</li>
+                  <li>LDR sensor detects day vs. night</li>
+                  <li>IR sensor detects motion</li>
+                  <li>Lamp fires only when both conditions are true simultaneously</li>
+                </ul>
+              </div>
+              <div class="spec-col">
+                <h4>What I learned</h4>
+                <ul>
+                  <li>Designing for an energy constraint, not just "does it turn on"</li>
+                  <li>Combining two sensor inputs into one reliable trigger condition</li>
+                  <li>Debugging analog sensor noise on real hardware</li>
+                </ul>
+              </div>
+            </div>
+            <p class="ds-nolink">No public repo yet.</p>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section class="section wrap" id="track">
+    <div class="section-head">
+      <div>
+        <h2>Track record</h2>
+      </div>
+      <p class="section-note">Numbers reported as-is — no rounding up.</p>
+    </div>
+    <div class="track-strip">
+      <div class="track-grid">
+        <div class="track-item"><b>47</b><span>LeetCode solved</span></div>
+        <div class="track-item"><b>12</b><span>Repos in 12 months</span></div>
+        <div class="track-item"><b>4</b><span>Bootstrap practice builds</span></div>
+        <div class="track-item"><b>2</b><span>Arduino / embedded builds</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section wrap" id="about">
+    <div class="section-head">
+      <div>
+        <h2>About</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>I'm a first-year <strong>B.Tech CSE student (IT specialization, Networking &amp; Communications)</strong> at SRM Institute of Science and Technology, batch 2024–2028, based in Chennai. Most of what's on this page was built in the last twelve months, outside of coursework hours.</p>
+        <p>Alongside these projects, I'm also actively participating in hackathons. My current work there sits closer to systems integration than any single language, which is part of why the projects above range from CLI software to embedded C.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="wrap">
+      <div class="section-head" style="border-color:rgba(237,239,231,0.25);">
+        <div>
+          <h2 style="color:#F5F6F1;">Contact</h2>
+        </div>
+      </div>
+      <div class="sig-grid">
+        <div class="sig-cell">
+          <span class="lbl">GitHub</span>
+          <a class="val" href="https://github.com/nakul28062007" target="_blank" rel="noopener">github.com/nakul28062007 ↗</a>
+        </div>
+        <div class="sig-cell">
+          <span class="lbl">Email</span>
+          <a class="val" href="mailto:nt5493@srmist.edu.in">nt5493@srmist.edu.in ↗</a>          
+        </div>
+        <div class="sig-cell">
+          <span class="lbl">LinkedIn</span>
+          <a class="val" href="https://www.linkedin.com/in/nakulvasudev/" target="_blank" rel="noopener">linkedin.com/in/nakulvasudev/ ↗</a>          
+        </div>
+      </div>
+      <div class="contact-foot">
+        <span>Portfolio — Nakul, 2026</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // sliding nav indicator
+  const navIndicator = document.getElementById('navIndicator');
+  const navAnchors = navLinks.querySelectorAll('a');
+  const isDesktopNav = () => window.matchMedia('(min-width: 821px)').matches;
+
+  function moveIndicatorTo(el){
+    if (!isDesktopNav()) return;
+    const linkRect = el.getBoundingClientRect();
+    const listRect = navLinks.getBoundingClientRect();
+    navIndicator.style.width = linkRect.width + 'px';
+    navIndicator.style.transform = `translateX(${linkRect.left - listRect.left}px)`;
+    navIndicator.style.opacity = '1';
+  }
+
+  navAnchors.forEach(a => {
+    a.addEventListener('mouseenter', () => moveIndicatorTo(a));
+    a.addEventListener('focus', () => moveIndicatorTo(a));
+  });
+  navLinks.addEventListener('mouseleave', () => { navIndicator.style.opacity = '0'; });
+
+  // project card click-through
+  document.querySelectorAll('.datasheet[data-link]').forEach(card => {
+    const url = card.dataset.link;
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'link');
+    card.setAttribute('aria-label', card.querySelector('h3') ? card.querySelector('h3').textContent + ' — open project link' : 'Open project link');
+
+    card.addEventListener('click', (e) => {
+      // don't hijack clicks on links, or the "Build log & notes" toggle / its expanded content
+      if (e.target.closest('a, details')) return;
+      window.open(url, '_blank', 'noopener');
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a, details')) {
+        e.preventDefault();
+        window.open(url, '_blank', 'noopener');
+      }
+    });
+  });
+
+  // project filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#projectGrid .datasheet');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        const show = f === 'all' || card.dataset.cat === f;
+        card.dataset.hide = show ? 'false' : 'true';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
