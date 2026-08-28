@@ -32,8 +32,11 @@
 - ⚡ I enjoy learning by building and improving one project at a time
 
 ---
+<br>
 
 <p align="center"> <a href="https://nakul28062007.github.io/nakul28062007/"> <img src="https://img.shields.io/badge/Visit%20My%20Portfolio-A970FF?style=for-the-badge&logo=googlechrome&logoColor=white" /> </a> </p>
+
+<br>
 
 ### 💻 Tech Stack
 
