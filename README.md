@@ -14,9 +14,11 @@
   </a>
 </p>
 
+
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira%20Code&size=22&duration=3000&pause=1000&color=A970FF&center=true&vCenter=true&width=600&height=50&lines=Hi%2C%20I'm%20Nakul%20%F0%9F%91%8B;Web%20Developer%20in%20Progress;Learning%20by%20Building%20Projects;Open%20to%20Collaborate%20on%20Cool%20Ideas" />
 </p>
+
 
 ---
 
